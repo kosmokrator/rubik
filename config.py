@@ -160,9 +160,10 @@ class Fire:
                 return (min(r, 1.0), min(g, 1.0), min(b, 1.0))
             c.colorize(f)
 
+
+
 class Shell:
     def loop(self, c):
         import IPython
-        Test().loop(c)
         IPython.embed()
 
