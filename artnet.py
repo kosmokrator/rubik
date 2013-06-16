@@ -1,4 +1,4 @@
-import fcntl, socket, struct, itertools, time, config
+import socket, struct, itertools, time, config
 
 
 HEADER = 'Art-Net\0'

@@ -69,6 +69,10 @@ class Cube(object):
                         for _ in xrange(0, Cube.DIM)]
                        for _ in xrange(0, Cube.DIM)]
                       for side in Cube.SIDES]
+        self.patch = [[[ None for _ in xrange(0, Cube.DIM) ]
+                        for _ in xrange(0, Cube.DIM) ]
+                       for _ in Cube.SIDES ]
+        config.set_patch(self.patch)
         self.update_backbuffer()
         if config.Display.enabled:
             import glcube
@@ -93,10 +97,15 @@ class Cube(object):
         for side in Cube.SIDES:
             for j in xrange(0, Cube.DIM):
                 for i in xrange(0, Cube.DIM):
+                    p = self.patch[side][i][j]
                     for c in xrange(0, 3):
                         r[p] = int(round(self.sides[side][i][j][c]*255))
                         p = p + 1
+                    r[p] = 255
+                    p = p + 1
+                    r[p] = 0
         self.artnet_socket.sendto(r.encode(), (config.Artnet.ip, config.Artnet.port))                   
+
     def rotate_side(self, side):
         self.sides[side] = [[ self.sides[side][Cube.DIM-j-1][i]
                               for j in xrange(0, Cube.DIM) ]
