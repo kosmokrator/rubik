@@ -1,13 +1,13 @@
 import rubik, config, random, time, sys, math
 
 if __name__=="__main__":
-    ani_object = None
+    ani_class = None
     if len(sys.argv) > 1:
         try:
-            ani_object = config.__dict__[sys.argv[1]]
+            ani_class = config.__dict__[sys.argv[1]]
         except:
-            ani_object = None
+            ani_class = None
     if not ani_object:
-        ani_object = config.Solver
-    rubik.Cube(ani_object().loop)
+        ani_class = config.Solver
+    rubik.Cube(ani_class().loop)
 
