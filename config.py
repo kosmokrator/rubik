@@ -83,7 +83,7 @@ def set_patch(patch):
 
 
 
-import random, time
+import random, time, math
 
 class Solver:
     # Wieviele Schritte wird der Würfel maximal randomisiert?
@@ -161,7 +161,7 @@ class Fire:
             c.colorize(f)
 
 class Shell:
-    def shell(self, c):
+    def loop(self, c):
         import IPython
         Test().loop(c)
         IPython.embed()
